@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image blurring and deblurring system</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* header {
+            background-color: #007BFF;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+        } */
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 20px auto;
+            /* background-color: #fff; */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* border-radius: 5px; */
+            border-radius: 8px;
+            background: rgb(255, 255, 255);
+            
+        }
+
+        h2 {
+            color: #007BFF;
+            margin-top: 0;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            /* color: #555; */
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p.error {
+            color: red;
+            margin: 10px 0;
+        }
+
+        .form-control-dark {
+        border-color: var(--bs-gray);
+        }
+        .form-control-dark:focus {
+        border-color: #fff;
+        box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+        }
+
+        .text-small {
+        font-size: 85%;
+        }
+
+        .dropdown-toggle:not(:focus) {
+        outline: 0;
+        }
+
+        li{
+        /* display: flex; */
+        /* align-items: center; */
+        padding: 24px 0;
+        font-size: 18px;
+        /* line-height: 27px; */
+        border-bottom: 1px solid rgb(230, 204, 204);
+        }
+    </style>
+          <!-- Bootstrap CSS -->
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <!-- <header>
+        <h1>Image Encryption and Decryption</h1>
+    </header> -->
+
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-3 border-bottom">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <!-- 1. SVG IMAGE MISSING -->
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+            <span class="fs-4">Image blurring and deblurring system</span>
+          </a>
+    
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="/imageDecrypt" class="nav-link active">Deblur</a></li>
+          </ul>
+        </header>
+      </div>
+      <div style="    background-color: #fc6767;">
+    <main>
+
+        <div>
+        </br>
+            <h1 style="text-align: center;">Image Masking Processor</h1>
+        <h3 style="text-align: center;">Deblur Image</h3>
+        <form action="/decrypt" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="image"  class="form-label">Choose an image to deblur:</label>
+                <input type="file"  class="form-control" name="image" accept="image/*" required>
+            </div>
+            <div class="mb-3">
+                <!-- <label for="password" class="form-label">Enter a password:</label>
+                <input type="password" class="form-control" name="password" required> -->
+                <label for="password" class="form-label">Enter the password:</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+            <div class="text-center">
+            <button id="decrypt-button" type="submit" class="btn btn-primary">Deblur</button>
+          </div>
+        </form>
+        <div id="change-this-content">
+          <p id="output"></p>
+    </div>
+    </div>
+        <!-- <h2>Decrypt Image</h2>
+        <form action="/decrypt" method="POST" enctype="multipart/form-data">
+            <label for="image">Choose an image to decrypt:</label>
+            <input type="file" name="image" accept="image/*" required>
+            <label for="password">Enter the decryption password:</label>
+            <input type="password" name="password" required>
+            <input type="submit" value="Decrypt">
+        </form> -->
+    </main>
+        <!-- Bootstrap Javascripts -->  
+        
+    </div>
+    <div class="container px-4 py-5">
+        <h2 class="pb-2 border-bottom">Steps</h2>
+        <ol><li><div>Click the <strong>Choose</strong> button above, or drag and drop a image into the it.</div></li><li><div bis_skin_checked="1">Enter the password.</div></li></ol>
+    </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+      <!-- <script>
+    document.getElementById('decrypt-button').addEventListener('click', function () {
+        document.getElementById('decrypt-button').style.display = 'none';  // Hide the Decrypt button
+        document.getElementById('progress-container').style.display = 'block';  // Show the progress bar
+
+    });
+</script> -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <h1>Socket.IO Example</h1>
+    <input type="text" id="messageInput" placeholder="Enter a message">
+    <button id="sendButton">Send</button>
+    <div id="response"></div> -->
+    <script>
+        var error_message = "{{ error_message }}";
+
+        // Check if the error_message is not empty and display an alert
+        if (error_message=='Invalid password. The provided password is incorrect.') {
+            alert(error_message);
+        }
+
+          document.getElementById('decrypt-button').addEventListener('click', function () {
+          // Replace this with your actual decryption logic
+          $.ajax({
+            url: '/get_session_data',  // Flask route to retrieve session data
+            method: 'GET',
+            success: function (data) {
+                $('#output').text(data);}
+            
+        });
+      });
+
+    
+      </script>
+    </body>
+</html>
