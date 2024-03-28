@@ -1,4 +1,4 @@
-## Introduction
+# Introduction
 This is a personal final year project that optimize and develope a python image masking/unmasking program using AES encryption/decryption algorithm and Gaussian blurring/deblurring algorithm.
 
 1. Run app-system-lsb-with-aes-.py for web purpose
